@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>card</title>
+    <link rel="stylesheet" href="{% static 'css/cards.css' %}">
+    
+</head>
+<body>
+  <br/><br/><br/>
+
+  {% if messages %}
+  {% for message in messages %}
+  <div class="messages">
+    <div id="message" style="background: white; color: rgb(16, 18, 18);" >{{ message }}</div>
+  </div>
+  {% endfor %}
+  {% endif %}
+    <div class="container">
+        <section>
+          <div class="items-inner">
+            {% for value in data %}
+            <div class="items">
+              <div class="item">
+                <div class="photo">
+                  <a href="#none">
+                    <img src="{{value.band_image.url}}" />
+                  </a>
+                  <!-- <div class="number">1</div> -->
+                  <div class="wish" div></div>
+                </div>
+                <div class="desc">
+                  <small>INFO</small>
+                  <span>{{value.band_name}}</span>
+                  <!-- <h5>28%<b>14,500</b></h5> -->
+                  <em>{{value.band_description}}</em>
+                  <small>{{value.band_price}}</small>
+                </div>
+                <button><a href="{% url 'cart' value.id %}">Add to cart</a></button>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+      </div>
+      <script src="{% static 'js/cards.js' %}"></script>
+</body>
+</html>

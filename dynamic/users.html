@@ -1,0 +1,55 @@
+<style>
+    * {
+        box-sizing: border-box;
+        padding: 0;
+        background-color: rgb(163, 155, 255);
+    }
+    table {
+      position: relative;
+      top: 10%;
+      font-family: Arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 2px solid #131313;
+      background-color: #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+
+    h1,h3 {
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      position: relative; 
+      top:50px; 
+      left:-20px;
+    }
+</style>
+<h1 >User's Table</h1>
+<h3 >Click on Edit to edit the user details</h3>
+<table>
+    <tr>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+
+    {% for value in data %}
+    <tr>
+      <td>{{value.username}}</td>
+      <td>{{value.password}}</td>
+      <td><button style="font-size: 13.5px; border-radius: 5px;" > <a href="{% url 'edit' value.id %}"> Edit</a></button></td>
+      <td><button ><a style="color: #131313;" href="{% url 'delete' value.id %}" >Delete</a></button></td>
+
+    </tr>
+    {% endfor %}
+    
+  </table>

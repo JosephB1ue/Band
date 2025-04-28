@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        input, textarea {
+            width: 300px;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter a New Band</h1>
+    <h3 style="background-color: beige; color: rgb(8, 205, 8); font-size: 18px;">{{message}}</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" id="band_name" name="band_name" placeholder="Band Name"><br><br>
+        <input type="file" id="band_image" name="band_image" placeholder="Band Image"><br><br>
+        <input type="number" id="band_price" name="band_price" placeholder="Net Worth"><br><br>
+        <textarea id="band_description" name="band_description" placeholder="Band Description"></textarea><br><br>
+        <input type="submit" value="Submit">
+</body>
+</html>
